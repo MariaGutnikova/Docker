@@ -38,6 +38,8 @@
 Остановка контейнера, проверка
 <img width="900" height="116" alt="image" src="https://github.com/user-attachments/assets/43c944be-dbc6-4f8c-871f-fbdb94ddf8ac" />
 
+Работа через файл .sh
+<img width="1919" height="1120" alt="image" src="https://github.com/user-attachments/assets/eccdf366-11d3-417b-98e9-2528045d5e2b" />
 
 ## Вывод
 В ходе выполнения лабораторной работы был изучен функционал Docker, а конкретно: запуск и остановка контейнеров, просмотр образов и запущенных контейнеров.
