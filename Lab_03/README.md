@@ -1,7 +1,5 @@
 # Отчет по лабораторной работе №3
-## Тема: Развертывание приложения в Kubernetes
-**Студент:** [ФИО]  
-**Группа:** [Группа]  
+## Тема: Развертывание приложения в Kubernetes 
 **Вариант:** 2 (PostgreSQL + Adminer)
 
 ---
@@ -131,13 +129,12 @@ spec:
 
 #### 4.1. Проверка состояния подов
 Команда `kubectl get pods` показывает, что все компоненты запущенны и работают корректно.
-*(Сюда вставьте скриншот `kubectl get pods`)*
-![kubectl get pods](img/pods_running.png)
+<img width="955" height="208" alt="image" src="https://github.com/user-attachments/assets/6ac91b4a-2bdb-46db-81d9-a57eef357709" />
+
 
 #### 4.2. Проверка сервисов
 Команда `kubectl get services` показывает открытые порты.
-*(Сюда вставьте скриншот `kubectl get services`)*
-![kubectl get services](img/services_status.png)
+<img width="1275" height="296" alt="image" src="https://github.com/user-attachments/assets/783766ea-096b-4908-831b-962b9fc1539f" />
 
 #### 4.3. Веб-интерфейс Adminer
 После перехода по адресу `http://<IP-ВМ>:30080` мы видим страницу входа. Для подключения используем:
@@ -146,8 +143,7 @@ spec:
 - **User:** postgres
 - **Password:** postgres
 
-*(Сюда вставьте скриншот интерфейса Adminer с успешным подключением)*
-![Adminer Connect](img/adminer_connected.png)
+<img width="1286" height="876" alt="image" src="https://github.com/user-attachments/assets/c4716f00-3f44-4aa4-b9ab-532d9fbd3dfa" />
 
 ---
 
