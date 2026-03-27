@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  hr_analytics:
+    build:
+      context: ./app
+    container_name: hr-retention-service
+    env_file: .env
+    volumes:
+      - ./data:/data:ro
+      - ./output:/output
+    restart: "no"
