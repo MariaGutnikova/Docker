@@ -19,6 +19,21 @@
 
 ---
 
+Структура проекта
+
+docker2/
+├── app/
+│   ├── Dockerfile            # Многоэтапная сборка (styled)
+│   ├── .dockerignore         # Исключения сборки
+│   ├── requirements.txt
+│   └── app.py     
+├── data/
+│   └── hr_data.csv      # Сгенерированные данные
+├── .env                      # Переменные окружения
+├── docker-compose.yml        # Оркестрация сервиса
+└── generate_data.py          # Генератор данных (Python)
+
+
 ## 2. Листинг кода
 
 ### 2.1 Генератор данных (`generate_data.py`)
