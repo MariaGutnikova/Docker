@@ -2,18 +2,23 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Копируем зависимости отдельно для кэширования слоев
+# Сначала копируем зависимости
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Безопасность: не работаем под root
-RUN useradd -u 1000 -m appuser
-USER appuser
-
-# Копируем код
+# Потом код (под root)
 COPY app.py .
 
-# Переменные пути по умолчанию
+# Создаём пользователя
+RUN useradd -u 1000 -m appuser
+
+# Даем права
+RUN chown -R appuser:appuser /app
+
+# Переключаемся
+USER appuser
+
+# Переменные
 ENV DATA_PATH=/data/hr_data.csv
 ENV OUTPUT_PATH=/output/chart.png
 
