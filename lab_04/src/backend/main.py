@@ -8,9 +8,6 @@ import datetime
 import os
 import time
 
-# ──────────────────────────────────────────────
-# Подключение к PostgreSQL через переменные окружения
-# ──────────────────────────────────────────────
 DB_USER = os.getenv("DB_USER", "user")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "password")
 DB_HOST = os.getenv("DB_HOST", "postgres-service")
@@ -22,9 +19,6 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# ──────────────────────────────────────────────
-# Модель таблицы «Новости» (Variant 2)
-# ──────────────────────────────────────────────
 class News(Base):
     __tablename__ = "news"
     id = Column(Integer, primary_key=True, index=True)
@@ -33,9 +27,6 @@ class News(Base):
     date = Column(DateTime, default=datetime.datetime.utcnow) # Дата
     category = Column(String)                   # Категория
 
-# ──────────────────────────────────────────────
-# Ожидание готовности БД (с повторными попытками)
-# ──────────────────────────────────────────────
 MAX_RETRIES = 30
 for attempt in range(MAX_RETRIES):
     try:
@@ -59,9 +50,6 @@ for attempt in range(MAX_RETRIES):
 else:
     raise RuntimeError("❌ Не удалось подключиться к БД после 30 попыток")
 
-# ──────────────────────────────────────────────
-# FastAPI приложение
-# ──────────────────────────────────────────────
 app = FastAPI(title="Corp News API", version="1.0.0")
 
 app.add_middleware(
@@ -71,17 +59,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ──────────────────────────────────────────────
-# Pydantic-схема для валидации входных данных
-# ──────────────────────────────────────────────
 class NewsModel(BaseModel):
     title: str = Field(..., min_length=1, max_length=200)
     content: str = Field(..., min_length=1)
     category: str = Field(..., min_length=1)
 
-# ──────────────────────────────────────────────
-# CRUD-эндпоинты
-# ──────────────────────────────────────────────
 
 @app.get("/")
 def root():
