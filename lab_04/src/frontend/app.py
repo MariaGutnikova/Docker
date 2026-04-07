@@ -6,9 +6,6 @@ import os
 import time
 from datetime import datetime
 
-# ──────────────────────────────────────────────
-# Конфигурация
-# ──────────────────────────────────────────────
 BACKEND_URL = os.getenv("BACKEND_URL", "http://backend-service:8000")
 
 st.set_page_config(
@@ -21,9 +18,6 @@ st.set_page_config(
 if "theme" not in st.session_state:
     st.session_state.theme = "dark"
 
-# ──────────────────────────────────────────────
-# CSS-стили
-# ──────────────────────────────────────────────
 def get_css(theme: str) -> str:
     if theme == "dark":
         return """
@@ -96,15 +90,9 @@ def get_css(theme: str) -> str:
 
 st.markdown(get_css(st.session_state.theme), unsafe_allow_html=True)
 
-# ──────────────────────────────────────────────
-# Заголовок
-# ──────────────────────────────────────────────
 st.title("📰 Corp News Feed")
 st.markdown("---")
 
-# ──────────────────────────────────────────────
-# Сайдбар
-# ──────────────────────────────────────────────
 with st.sidebar:
     st.header("Настройки")
     if st.button("Сменить тему"):
@@ -122,9 +110,6 @@ with st.sidebar:
     except:
         st.error("Оффлайн ❌")
 
-# ──────────────────────────────────────────────
-# Основной интерфейс
-# ──────────────────────────────────────────────
 tabs = st.tabs(["📋 Лента новостей", "➕ Добавить новость", "📊 Аналитика"])
 
 # --- TAB 1: Лента ---
