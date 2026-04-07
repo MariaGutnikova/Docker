@@ -90,18 +90,14 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 
 ## 4. Результаты работы (Скриншоты)
 
-> [!NOTE]
-> Ниже приведены инструкции по получению скриншотов после деплоя.
-
 ### 4.1 Сборка образов
 
 ```bash
 docker build -t corp-news-backend:v1 ./src/backend
 docker build -t corp-news-frontend:v1 ./src/frontend
 ```
-
-**Скриншот успешной сборки:**
-*(Место для скриншота)*
+<img width="1152" height="495" alt="Снимок экрана 2026-04-07 150751" src="https://github.com/user-attachments/assets/8c7cbeb7-e587-49f4-a757-3aa7760db7c5" />
+<img width="1103" height="523" alt="Снимок экрана 2026-04-07 150700" src="https://github.com/user-attachments/assets/892ba45d-4064-4984-a9f6-0cc91b2c47a4" />
 
 ### 4.2 Статус подов в K8s
 
@@ -111,9 +107,9 @@ kubectl apply -f k8s/backend.yaml
 kubectl apply -f k8s/frontend.yaml
 kubectl get pods
 ```
-
-**Скриншот вывода kubectl get pods:**
-*(Место для скриншота, все поды должны быть в статусе Running)*
+<img width="1036" height="168" alt="image" src="https://github.com/user-attachments/assets/42f0e52d-e685-43f0-8b76-cab0c469e843" />
+<img width="1125" height="169" alt="image" src="https://github.com/user-attachments/assets/258d14bd-0dd8-4a74-af67-570b39bfc91c" />
+<img width="1148" height="100" alt="image" src="https://github.com/user-attachments/assets/1b9328df-d277-4ab0-aecf-a2f78c5a183d" />
 
 ### 4.3 Работа приложения
 
