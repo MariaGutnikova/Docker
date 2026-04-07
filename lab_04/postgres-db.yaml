@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-postgres-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: news-postgres
+  template:
+    metadata:
+      labels:
+        app: news-postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:13
+        env:
+        - name: POSTGRES_USER
+          value: "user"
+        - name: POSTGRES_PASSWORD
+          value: "password"
+        - name: POSTGRES_DB
+          value: "news_db"
+        ports:
+        - containerPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: news-postgres-service
+spec:
+  selector:
+    app: news-postgres
+  ports:
+    - port: 5432
+      targetPort: 5432
